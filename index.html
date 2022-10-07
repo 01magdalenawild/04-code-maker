@@ -1,9 +1,10 @@
+<!DOCTYPE html>
 <html lang="en-us">
+    
     <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Coding Web Quiz</title>
+        <title>Code Quiz</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=-1" />
         <link rel="stylesheet" href="css/reset.css" />
         <link rel="stylesheet" href="css/style.css">
     </head>
@@ -14,39 +15,58 @@
             the scores if they want to -->
         </div>
         <div class="outter container"></div>
-        <div class="top bar"></div>
+
+
+        <div class="top-bar"></div>
                 <button>  View Highscores </button>
-        <div>
-            <!-- span with your timer in it -->
-            <p>Timer: 00:00</p>
+                    <p>Timer: 00:00</p>
         </div>
 
-        <div class="wrapper">
+        <body class="inner-container">
             <div id="start-screen" class="start">
-                <h1>Coding Quiz Challenge</h1>
-                <!-- p tag with a little intro about the quiz -->
-
+                <header class="quiz-Intro">
+                <h1>Welcome to the quiz</h1>
+                <p>To get started with this quiz, start the quiz!</p>
+                    <button>Start Quiz</button>
+                </header>
                 <!-- start button -->
+                <main>
+            <section class="question-screen">
+                <h2>Question Here</h2>
+                <ul>
+                    <li><button>Answer 1</button></li>
+                    <li><button>Answer 1</button></li>
+                    <li><button>Answer 1</button></li>
+                    <li><button>Answer 1</button></li>
+                </ul>
+                </section>
+
+    <section class="quiz-ending">
+            <h2>Quiz Finished!</h2>
+            <p>Your Score: 00</p>
+    <div>
+        <label for="">Enter Initials:</label>>
+        <input type="text">
+        <button>Submit</button>
+        </div>  
+        </section>
+
+        <section class="highscores-screen">
+            <h2>Highscores:</h2>
+            <ol>
+                <li></li>
+
+            </ol>
+
+
+        </section>
+
+
+
+
+
+
+                </main>
             </div>
-
-            <div id="questions" class="hide">
-                <h2 id="question-title"></h2>
-                <div id="choices" class="choices"></div>
-            </div>
-
-            <div id="end-screen" class="hide">
-                <h2>All done!</h2>
-                <p>Your final score is <span id="final-score"></span>.</p>
-                <p>
-                    Enter initials: <input type="text" id="initials" max="3" />
-                    <button id="submit">Submit</button>
-                </p>
-            </div>
-
-            <div id="feedback" class="feedback hide"></div>
-        </div>
-
-        <script src="./assets/js/questions.js"></script>
-        <script src="./assets/js/logic.js"></script>
-    </body>
+        </body>
 </html>
