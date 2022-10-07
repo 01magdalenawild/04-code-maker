@@ -28,3 +28,15 @@ THEN the game is over
 WHEN the game is over
 THEN I can save my initials and score
 ```
+
+## Link
+
+[Quiz Link](https://01magdalenawild.github.io/04-code-maker/)
+
+[Repository](https://github.com/01magdalenawild/04-code-maker)
+
+
+## Screenshots
+![Screenshot png](assets/images/start.png)
+![Screenshot png](assets/images/choices.png)
+![Screenshot png](assets/images/quizover.png)
