@@ -72,15 +72,12 @@ h1,h2{
     display: block;
  }
 
-.question-section {
-   display: none;
-}
+ .choices button{
+   display: block;
+   margin-top: 10px;
+   padding: 2px 5px;
+ }
 
-.quiz-section{
+ .initial-section-hide {
    display: none;
-}
-
-.highscores-section{
-   display: none;
-}
-
+ }

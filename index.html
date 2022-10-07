@@ -14,7 +14,7 @@
         <!--      -->
         <div class="top-bar">
             <a href="./highscores.html">View Highscores</a>
-            <p id="timer">Timer: 00:00</p>
+            <p>Timer: <span id="timer"></span></p>
         </div>
     </header>
 
@@ -34,17 +34,12 @@
         </div>
         <!-- start button -->
         <main>
-            <section id="question-section" class="question-section">
-                <h2>Question Here</h2>
-                <ul>
-                    <li><button>Answer 1</button></li>
-                    <li><button>Answer 2</button></li>
-                    <li><button>Answer 3</button></li>
-                    <li><button>Answer 4</button></li>
-                </ul>
+            <section id="question-section" class="initial-section-hide">
+                <h2 id="question">Question Here</h2>
+                <section id="choices" class="choices"></section>
             </section>
 
-            <section id="quiz-section" class="quiz-section" >
+            <section id="quiz-over-section" class="initial-section-hide" >
                 <h2>Quiz Finished!</h2>
                 <p>Your final score is <span id="final-score"></span>.</p>
                 <div>
@@ -56,7 +51,7 @@
                 </div>
             </section>
 
-            <section id="highscores-section" class="highscores-section">
+            <section id="highscores-section" class="initial-section-hide">
                 <h2>Highscores:</h2>
                 <ol>
                     <li></li>

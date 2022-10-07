@@ -3,21 +3,21 @@
 var currentQuestion = 0;
 // time
 var time = 60;
-// timerId
-var timer;
 
 // variables to reference DOM elements
 var questionsSectionEl = document.getElementById('questions-section');
 var startbuttonEl = document.getElementById('startbutton')
 var startSectionEl = document.getElementById('start-section')
 var questionSectionEl = document.getElementById('question-section')
-var quizSectionEl = document.getElementById('quiz-section')
+var quizOverSectionEl = document.getElementById('quiz-over-section')
 var highscoresSectionEl = document.getElementById('highscores-section')
+
+document.getElementById('timer').innerHTML = time;
 /* FUNCTION TO START THE QUIZ */
 function startQuiz() {
     // hide start screen
     startSectionEl.style.display = "none";
-    quizSectionEl.style.display = "none";
+    quizOverSectionEl.style.display = "none";
     highscoresSectionEl.style.display = "none";
     // un-hide questions section
     questionSectionEl.style.display = "block";
@@ -29,24 +29,25 @@ function startQuiz() {
 }
 
 function initiateTimer() {
-    clockTick();
+    setInterval(clockTick, 1000);
 }
 
 /* FUNCTION TO GET/SHOW EACH QUESTION */
 function getQuestions() {
     // get current question object from array
-
+    var questionValue = questions[currentQuestion];
     // update title with current question
-
+    document.getElementById("question").innerHTML = questionValue.title;
     // clear out ant old question choices
-
+    //document.getElementById('choices').innerHTML = '';
     // loop over choices
-    // FOR {
-    // create new button for each choice
-
-    // display on the page
-
-    // }
+    var len = questionValue.choices.length;
+    for(var i=0; i<len; i++) {
+        var button = document.createElement("button");
+        button.textContent = i+1 + ": " + questionValue.choices[i];
+        button.setAttribute("choice-index", i);
+        document.querySelector("#choices").appendChild(button);
+    }
 }
 
 /* FUNCTION FOR CLICKING A QUESTION */
@@ -91,8 +92,16 @@ function quizEnd() {
 /* FUNCTION FOR UPDATING THE TIME */
 function clockTick() {
     // update time
-    document.getElementById('timer').innerHTML = 'Timer: ' + time;
     // check if user ran out of time
+    if (time > 0) {
+        time--;
+        document.getElementById('timer').innerHTML = time;
+    } else {
+        // proceed with ending of game
+        quizOverSectionEl.style.display = "block";
+        questionSectionEl.style.display = "none";
+        document.getElementById('final-score').innerHTML = time;
+    }
 }
 
 function saveHighscore() {
@@ -112,5 +121,5 @@ function saveHighscore() {
 // user clicks button to submit initials
 
 // user clicks button to start quiz
-startbuttonEl.addEventListener('click', startQuiz)
+//startbuttonEl.addEventListener('click', startQuiz)
     // user clicks on element containing choices
