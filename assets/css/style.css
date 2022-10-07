@@ -72,14 +72,15 @@ h1,h2{
     display: block;
  }
 
-.question-screen {
+.question-section {
    display: none;
 }
 
-.quiz-finish-screen{
+.quiz-section{
    display: none;
 }
 
-.highscore-scree{
-   display: block;
+.highscores-section{
+   display: none;
 }
+

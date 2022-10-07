@@ -1,23 +1,35 @@
 // variables to keep track of quiz state
-    // currentQuestion
-    // time
-    // timerId
+// currentQuestion
+var currentQuestion = 0;
+// time
+var time = 60;
+// timerId
+var timer;
 
 // variables to reference DOM elements
-var questionsEl = document.getElementById('questions');
-
-
+var questionsSectionEl = document.getElementById('questions-section');
+var startbuttonEl = document.getElementById('startbutton')
+var startSectionEl = document.getElementById('start-section')
+var questionSectionEl = document.getElementById('question-section')
+var quizSectionEl = document.getElementById('quiz-section')
+var highscoresSectionEl = document.getElementById('highscores-section')
 /* FUNCTION TO START THE QUIZ */
 function startQuiz() {
     // hide start screen
-
+    startSectionEl.style.display = "none";
+    quizSectionEl.style.display = "none";
+    highscoresSectionEl.style.display = "none";
     // un-hide questions section
-
+    questionSectionEl.style.display = "block";
     // start timer
-
+    initiateTimer();
     // show starting time
 
-    getQuestion();
+    getQuestions();
+}
+
+function initiateTimer() {
+    clockTick();
 }
 
 /* FUNCTION TO GET/SHOW EACH QUESTION */
@@ -29,12 +41,12 @@ function getQuestions() {
     // clear out ant old question choices
 
     // loop over choices
-        // FOR {
-            // create new button for each choice
+    // FOR {
+    // create new button for each choice
 
-            // display on the page
-        
-        // }
+    // display on the page
+
+    // }
 }
 
 /* FUNCTION FOR CLICKING A QUESTION */
@@ -61,8 +73,8 @@ function questionClick(event) {
     // move to next question
 
     // check if we've run out of questions
-        // if so, end the quiz
-        // else, get the next question    
+    // if so, end the quiz
+    // else, get the next question    
 }
 
 /* FUNCTION TO END THE QUIZ */
@@ -79,7 +91,7 @@ function quizEnd() {
 /* FUNCTION FOR UPDATING THE TIME */
 function clockTick() {
     // update time
-
+    document.getElementById('timer').innerHTML = 'Timer: ' + time;
     // check if user ran out of time
 }
 
@@ -87,18 +99,18 @@ function saveHighscore() {
     // get value of input box - for initials
 
     // make sure value wasn't empty
-        // get saved scores from localstorage, or if not any, set to empty array
+    // get saved scores from localstorage, or if not any, set to empty array
 
-        // format new score object for current user
+    // format new score object for current user
 
-        // save to local storage
+    // save to local storage
 
-        // redirect to next page
+    // redirect to next page
 }
 
 /* CLICK EVENTS */
-    // user clicks button to submit initials
+// user clicks button to submit initials
 
-    // user clicks button to start quiz
-
+// user clicks button to start quiz
+startbuttonEl.addEventListener('click', startQuiz)
     // user clicks on element containing choices
