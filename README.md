@@ -2,8 +2,8 @@
 
 
 
-
-
+## Description
+Made a code quiz game using Javascript, HTML, and CSS. Scoring is based on how fast you are able to complete the quiz, with each wrong answer reducing your remaining time.
 
 ### User Story
 
