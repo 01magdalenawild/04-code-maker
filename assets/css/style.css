@@ -72,6 +72,12 @@ h1,h2{
     display: block;
  }
 
+ #feedback {
+   margin-top: 10px;
+   font-weight: 600;
+   font-size: 20px;
+ }
+
  .choices button{
    display: block;
    margin-top: 10px;

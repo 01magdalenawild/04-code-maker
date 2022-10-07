@@ -4,6 +4,8 @@ var currentQuestion = 0;
 // time
 var time = 60;
 
+var timer;
+
 // variables to reference DOM elements
 var questionsSectionEl = document.getElementById('questions-section');
 var startbuttonEl = document.getElementById('startbutton')
@@ -29,7 +31,7 @@ function startQuiz() {
 }
 
 function initiateTimer() {
-    setInterval(clockTick, 1000);
+    timer = setInterval(clockTick, 1000);
 }
 
 /* FUNCTION TO GET/SHOW EACH QUESTION */
@@ -39,7 +41,8 @@ function getQuestions() {
     // update title with current question
     document.getElementById("question").innerHTML = questionValue.title;
     // clear out ant old question choices
-    //document.getElementById('choices').innerHTML = '';
+    document.getElementById('choices').innerHTML = '';
+    document.getElementById("feedback").textContent = "";
     // loop over choices
     var len = questionValue.choices.length;
     for(var i=0; i<len; i++) {
@@ -52,41 +55,50 @@ function getQuestions() {
 
 /* FUNCTION FOR CLICKING A QUESTION */
 function questionClick(event) {
-
+    var el = event.target;
     // if the clicked element is not a choice button, do nothing.
-    if (something) {
+    if (el.matches("button")) {
+        var questionValue = questions[currentQuestion];
 
-    }
+        // check if user guessed wrong
+        if (questionValue.answer !== questionValue.choices[el.getAttribute("choice-index")]) {
+            if (time > 10) {
+                // penalize time
+                time -= 10;
+                // display new time on page
+                document.getElementById('timer').innerHTML = time;
+            } else {
+                time = 0;
+                document.getElementById('timer').innerHTML = time;
+                quizEnd();
+            }
+            // give them feedback, letting them know it's wrong
+            document.getElementById("feedback").textContent = "Incorrect!";
+        } else {
+            // give them feedback, letting them know it's right
+            document.getElementById("feedback").textContent = "Correct!";
+        }
 
-    // check if user guessed wrong
-    if (something) {
-        // penalize time
-
-        // display new time on page
-
-        // give them feedback, letting them know it's wrong
-    } else {
-        // give them feedback, letting them know it's right
-    }
-
-    // flash right/wrong feedback on page for a short period of time
-
-    // move to next question
-
-    // check if we've run out of questions
-    // if so, end the quiz
-    // else, get the next question    
+        // move to next question
+        currentQuestion++;
+        if (currentQuestion > 3) {
+            setTimeout(quizEnd, 2000);
+        } else {
+            setTimeout(getQuestions, 2000);
+        }
+    }  
 }
 
 /* FUNCTION TO END THE QUIZ */
 function quizEnd() {
     // stop timer
-
+    clearInterval(timer);
     // show end screen
-
+    quizOverSectionEl.style.display = "block";
     // show final score
-
+    document.getElementById('final-score').innerHTML = time;
     // hide questions section
+    questionSectionEl.style.display = "none";
 }
 
 /* FUNCTION FOR UPDATING THE TIME */
@@ -98,9 +110,7 @@ function clockTick() {
         document.getElementById('timer').innerHTML = time;
     } else {
         // proceed with ending of game
-        quizOverSectionEl.style.display = "block";
-        questionSectionEl.style.display = "none";
-        document.getElementById('final-score').innerHTML = time;
+        quizEnd();
     }
 }
 
@@ -121,5 +131,6 @@ function saveHighscore() {
 // user clicks button to submit initials
 
 // user clicks button to start quiz
-//startbuttonEl.addEventListener('click', startQuiz)
+    startbuttonEl.addEventListener('click', startQuiz)
     // user clicks on element containing choices
+    document.querySelector("#choices").addEventListener("click", questionClick);
